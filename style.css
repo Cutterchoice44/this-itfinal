@@ -467,3 +467,17 @@ section h2 {
     max-width: 270px !important; /* 180px * 1.5 */
   }
 }
+
+/* MOBILE: hide second logo and pop-out player */
+@media (max-width: 768px) {
+  /* 1. Hide the second logo on mobile */
+  header .logo-container:last-of-type {
+    display: none !important;
+  }
+
+  /* 2. Hide the “Pop Out Player” button on mobile */
+  #popOutBtn {
+    display: none !important;
+  }
+}
+
