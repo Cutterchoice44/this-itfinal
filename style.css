@@ -1,0 +1,469 @@
+/* ─── RESET & BASE STYLES ───────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --brand-teal: #5A8785;
+  --bg-dark:   #111;
+  --text-light: #fafafa;
+}
+
+html, body {
+  height: 100%;
+  background: var(--bg-dark);
+  color: var(--text-light);
+  font-family: Arial, sans-serif;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── HEADER ───────────────────────────────────────────────────────────────── */
+header {
+  display: flex;
+  justify-content: space-between;  /* logos at ends */
+  align-items:    center;
+  padding: 0.5rem 0.8rem;
+  background: #000;
+}
+
+header .logo {
+  flex: 0 0 auto;  /* don’t stretch or shrink */
+  height: 180px;          /* increased by 50% */
+  margin-bottom: 0.3rem;
+}
+
+header .title {
+  flex: 1 1 auto;   /* fill center gap */
+  text-align: center;
+}
+
+header .title h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+header .title .tagline {
+  font-size: 1.2rem;
+  color: var(--brand-teal);
+  margin-top: 0.3rem;
+}
+
+/* ─── GRID LAYOUT ─────────────────────────────────────────────────────────── */
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+@media (min-width: 600px) {
+  .grid-container {
+    grid-template-columns: 1fr 1.5fr;
+  }
+  header .logo {
+    margin-bottom: 0;
+    margin-right: 1rem;
+  }
+}
+
+@media (min-width: 900px) {
+  header .title h1 {
+    font-size: 5rem;
+  }
+  header .title .tagline {
+    font-size: 2rem;
+  }
+  .grid-container {
+    grid-template-columns: 1fr 1.5fr 1fr 1fr;
+  }
+  .chat iframe {
+    height: 800px;
+  }
+  #now-art {
+    max-width: 600px;
+  }
+  /* Desktop override: further boost if needed */
+  header .logo {
+    height: 180px !important;  /* keep 50% larger */
+  }
+}
+
+/* ─── SECTIONS ────────────────────────────────────────────────────────────── */
+section {
+  background: #222;
+  border: 2px solid var(--brand-teal);
+  border-radius: 6px;
+  padding: 0.5rem;
+}
+
+section h2 {
+  margin-bottom: 1.7rem;
+  color: var(--brand-teal);
+  text-align: center;
+}
+
+/* CHAT IFRAME */
+.chat iframe {
+  width: 100%;
+  height: 1000px;
+  border: none;
+  border-radius: 4px;
+}
+
+/* LIVE PLAYER */
+.live-player {
+  background: #222;
+  border: 2px solid var(--brand-teal);
+  border-radius: 6px;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.live-player iframe,
+.live-player audio {
+  width: 100%;
+  height: 500px;
+  max-height: 55vh;
+  border: none;
+  border-radius: 4px;
+  margin: 0 auto 1rem;
+  display: block;
+}
+
+.player-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+}
+
+#now-archive {
+  font-weight: bold;
+  color: var(--brand-teal);
+  font-size: 1.5rem;
+  margin: 0.3rem 0 1rem;
+}
+
+.popout-btn {
+  display: inline-block;
+  padding: 0.5rem 2rem;
+  font-size: 1rem;
+  background: var(--brand-teal);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 0.3rem auto 0.5rem;
+}
+
+/* CURRENT DJ ARTWORK */
+#now-art {
+  width: 100%;
+  max-width: 350px;
+  border-radius: 8px;
+  object-fit: cover;
+  display: block;
+  margin: 1rem auto;
+}
+
+/* WEEKLY SCHEDULE */
+.schedule {
+  background: #111;
+  border-radius: 6px;
+  padding: 0 1rem 1rem;
+  max-height: 2000px;
+  overflow-y: auto;
+}
+
+.schedule-heading {
+  position: sticky;
+  top: 0;
+  background: #111;
+  z-index: 10;
+  padding: 0.5rem 0;
+  font-size: 1.5rem;
+  border-bottom: 1px solid var(--brand-teal);
+}
+
+#schedule-container h3 {
+  margin-top: 2rem;
+  border-bottom: 1px solid var(--brand-teal);
+  padding-bottom: 0.5rem;
+  font-size: 1.6rem;
+}
+
+#schedule-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+#schedule-container li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  margin-bottom: 1rem;
+}
+
+#schedule-container li strong {
+  min-width: 80px;
+  font-weight: bold;
+}
+
+#schedule-container li img {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+#schedule-container li span,
+#schedule-container li a {
+  font-size: 1.2rem;
+}
+
+#schedule-container li a {
+  margin-left: auto;
+  background: var(--brand-teal);
+  color: #000;
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+/* MIXCLOUD EMBEDS */
+.mixcloud {
+  background: #000;
+  border-radius: 6px;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 2000px;
+  overflow: hidden;
+}
+
+#mixcloud-list {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 1900px;
+  padding-right: 5px;
+  scroll-behavior: smooth;
+}
+
+#mixcloud-list iframe {
+  width: 100%;
+  height: 120px;
+  margin-bottom: 0.5rem;
+  border: none;
+}
+
+/* ADD SHOW UI */
+.add-mixcloud {
+  text-align: center;
+  padding-top: 0.5rem;
+}
+
+.add-mixcloud input {
+  width: 80%;
+  max-width: 600px;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.add-mixcloud button {
+  margin-top: 0.5rem;
+  padding: 0.5rem 2rem;
+  font-size: 1rem;
+  background: var(--brand-teal);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* FOOTER BANNER */
+.banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--brand-teal);
+  padding: 1rem;
+}
+
+.banner a {
+  flex: 1;
+  text-align: center;
+  text-decoration: none;
+  color: #000;
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+}
+
+.banner a:hover {
+  color: var(--text-light);
+}
+
+@media (min-width: 600px) {
+  .banner {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+/* PLAYER HEIGHT OVERRIDES (desktop only) */
+.live-player iframe,
+.player-container iframe {\n  height: 90vh !important;
+  margin-top: 10px !important;
+}
+
+/* ─── MOBILE OVERWRITES ────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Layout */
+  header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  header .logo {
+    max-width: 180px;
+    margin-bottom: 0.5rem;
+  }
+
+  header .title h1 {
+    font-size: 1.8rem;
+    line-height: 1.2;
+  }
+
+  header .title .tagline {
+    font-size: 1rem;
+  }
+
+  .grid-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0 0.5rem;
+  }
+
+  .live-player    { order: 1; }
+  .chat           { order: 2; }
+  .schedule       { order: 3; }
+  .mixcloud       { order: 4; display: none !important; }
+
+  /* Chat & Player sizing */
+  .chat iframe    { height: 650px !important; }
+  .live-player iframe,
+  .live-player audio { height: 80px !important; }
+}
+
+/* MOBILE FIXES */
+.chat-btn-mobile {
+  display: none;
+}
+@media (max-width: 768px) {
+  /* 1. Hide the second logo on mobile */
+  header .logo-container:nth-ofype(3) {
+    display: none !important;
+  }
+  /* 2. Hide the redundant archive title under player */
+  #now-archive {
+    display: none !important;
+  }
+  /* 3. Show the Chat popout button on mobile */
+  .chat-btn-mobile {
+    display: inline-block !important;
+    margin: 0.5rem auto;
+  }
+}
+
+/* Chat Modal Overlay (mobile only) */
+@media (max-width: 768px) {
+  #chatModal {
+    position: fixed; top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.9);
+    display: none; z-index: 9999;
+    justify-content: center; align-items: center;
+  }
+  #chatModal .modal-content {
+    position: relative; width: 100%; height: 100%;
+  }
+  #chatModal .modal-content iframe {
+    width: 100%; height: 100%; border: none; border-radius: 4px;
+  }
+  #chatModal .close-btn {
+    position: absolute; top: 1rem; right: 1rem;
+    background: var(--brand-teal); color: #fff;
+    border: none; padding: 0.5rem; border-radius: 4px;
+    font-size: 1rem; cursor: pointer; z-index: 10000;
+  }
+  /* Hide default chat pop-out button */
+  .chat .popout-btn { display: none !important; }
+}
+
+/* SLIDESHOW: enlarge by 20% and teal border */
+#slideshow {
+  transform: scale(1.2);
+  transform-origin: center center;
+  border: 2px solid var(--brand-teal);
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+/* CENTER Pop-Out Chat button */
+.chat-actions {
+  text-align: center;
+}
+.chat-actions .popout-btn {
+  display: inline-block;
+  margin: 0 auto;
+}
+
+/* DESKTOP: increase header logo size by 50% */
+@media (min-width: 900px) {
+  header .logo {
+    height: 180px !important;
+  }
+}
+
+/* MOBILE OVERRIDE: show chat pop-out button beneath chat */
+@media (max-width: 768px) {
+  .popout-btn {
+    display: inline-block !important;
+    margin: 0.5rem auto !important;
+  }
+}
+
+/* SLIDESHOW: enlarge by 20% and teal border */
+#slideshow {
+  transform: scale(1.2);
+  transform-origin: center center;
+  border: 2px solid var(--brand-teal);
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+/* SLIDESHOW: enlarge DJ artwork by 20% and teal border */
+#now-art {
+  max-width: 420px !important; /* 350px * 1.2 */
+  border: 2px solid var(--brand-teal) !important;
+  display: block !important;
+  margin: 1rem auto !important;
+}
+
+/* DESKTOP: increase header logos by another 50% */
+@media (min-width: 900px) {
+  header .logo {
+    max-width: 270px !important; /* 180px * 1.5 */
+  }
+}
