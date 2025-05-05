@@ -47,6 +47,30 @@ function shuffleIframesDaily() {
   iframes.forEach(ifr => container.appendChild(ifr));
   localStorage.setItem("lastShuffleDate", today);
 }
+// Grab the existing container
+// Grab the existing container
+const listEl = document.querySelector('.rc-user-list');
+
+async function reloadListeners() {
+  if (!listEl) return;
+
+  listEl.replaceChildren();  
+
+  try {
+    const listeners = await rcFetch(`/listeners?station=${STATION_ID}`);
+    listeners.forEach(u => {
+      const entry = document.createElement('div');
+      entry.textContent = u.name;
+      listEl.appendChild(entry);
+    });
+  } catch (err) {
+    console.error('Failed to load listeners:', err);
+  }
+}
+
+// Run it immediately, then every 15 seconds
+reloadListeners();
+setInterval(reloadListeners, 15000);
 
 // —————————————————————————————————————
 // 3) DATA FETCHERS
