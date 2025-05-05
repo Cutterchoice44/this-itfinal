@@ -72,12 +72,21 @@ header .title .tagline {
   }
 }
 
+/* ─── HEADER TITLE ───────────────────────────────────────── */
+header .title h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;  /* keep your existing sizing */
+  margin: 0;
+}
+
 @media (min-width: 900px) {
   header .title h1 {
-    font-size: 5rem;
+    /* desktop size */
+    font-size: 6rem;
+  }
   }
   header .title .tagline {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
   .grid-container {
     grid-template-columns: 1fr 1.5fr 1fr 1fr;
@@ -124,11 +133,10 @@ section h2 {
   padding: 0.5rem;
   text-align: center;
 }
-
 .live-player iframe,
 .live-player audio {
   width: 100%;
-  height: 500px;
+  height: 300px;
   max-height: 55vh;
   border: none;
   border-radius: 4px;
@@ -479,5 +487,12 @@ section h2 {
   #popOutBtn {
     display: none !important;
   }
+}
+/* ─── SECTION FRAMES ────────────────────────────────────────────────────── */
+section {
+  background: #222;
+  border: 2px solid var(--brand-teal);
+  border-radius: 6px;
+  padding: 0.5rem;
 }
 
